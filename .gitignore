@@ -1,0 +1,24 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Streamlit configurations (if custom keys stored, but config.toml is fine)
+.streamlit/
+
+# Local databases
+database/eduai.db
+
+# User uploads & cached indexes
+uploads/
+
+# Compiled reports & slide decks
+report/report.pdf
+report/presentation.pptx
+
+# Local environment variables
+.env
+.flaskenv
+venv/
+env/
+ENV/

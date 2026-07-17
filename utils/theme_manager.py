@@ -27,10 +27,29 @@ def inject_theme():
             --border: rgba(255, 255, 255, 0.08);
         }
         
-        html, body, [class*="css"] {
+        html, body, [class*="css"], [class*="st-"] {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text-primary) !important;
         }
+
+        /* Explicit text elements contrast coloring */
+        p, li, label, span, strong, em, h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary) !important;
+        }
+        div[data-testid="stMarkdownContainer"] * {
+            color: var(--text-primary) !important;
+        }
+
+        /* Specific sidebar exception overrides */
+        section[data-testid="stSidebar"] * {
+            color: #cbd5e1 !important;
+        }
+
+        /* Widget labels styling */
+        div[data-testid="stWidgetLabel"] p, label[data-testid="stWidgetLabel"] p {
+            color: var(--text-secondary) !important;
+        }
+        
         .stApp {
             background: radial-gradient(circle at 50% 50%, #0f172a 0%, #090a0f 100%) !important;
         }
@@ -38,9 +57,6 @@ def inject_theme():
             background-color: rgba(15, 23, 42, 0.85) !important;
             backdrop-filter: blur(20px);
             border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
-        }
-        section[data-testid="stSidebar"] * {
-            color: #cbd5e1 !important;
         }
         section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"][aria-current="page"] {
             background-color: rgba(99, 102, 241, 0.2) !important;
@@ -79,7 +95,7 @@ def inject_theme():
         .sdg-banner-title {
             font-size: 12px;
             font-weight: 600;
-            color: #34d399;
+            color: #34d399 !important;
             margin: 0 0 4px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -87,8 +103,11 @@ def inject_theme():
         .sdg-banner-text {
             font-size: 15px;
             font-weight: 600;
-            color: #ffffff;
+            color: #ffffff !important;
             margin: 0;
+        }
+        .sdg-banner * {
+            color: inherit !important;
         }
         button[data-testid="baseButton-secondary"] {
             background: var(--primary-gradient) !important;
@@ -99,6 +118,9 @@ def inject_theme():
             font-weight: 600 !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
             box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1) !important;
+        }
+        button[data-testid="baseButton-secondary"] * {
+            color: white !important;
         }
         button[data-testid="baseButton-secondary"]:hover {
             transform: translateY(-2px) !important;
@@ -116,12 +138,15 @@ def inject_theme():
             font-size: 13.5px;
             max-width: 80%;
             margin-bottom: 12px;
-            color: var(--text-primary);
+            color: var(--text-primary) !important;
             line-height: 1.5;
+        }
+        .chat-bubble-tutor * {
+            color: var(--text-primary) !important;
         }
         .chat-bubble-user {
             background-color: var(--primary);
-            color: #ffffff;
+            color: #ffffff !important;
             border-radius: 12px 12px 2px 12px;
             padding: 10px 14px;
             font-size: 13.5px;
@@ -130,6 +155,9 @@ def inject_theme():
             margin-bottom: 12px;
             line-height: 1.5;
             box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+        }
+        .chat-bubble-user * {
+            color: #ffffff !important;
         }
         .upload-dashed-box {
             border: 1.5px dashed rgba(255, 255, 255, 0.15);
@@ -169,15 +197,18 @@ def inject_theme():
         .stat-val {
             font-size: 24px;
             font-weight: 700;
-            color: #818cf8;
+            color: #818cf8 !important;
             margin-bottom: 4px;
         }
         .stat-label {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+        .stat-box * {
+            color: inherit !important;
         }
 
         .custom-alert-danger {
@@ -185,24 +216,33 @@ def inject_theme():
             border: 1px solid rgba(239, 68, 68, 0.2);
             border-radius: 8px;
             padding: 12px 16px;
-            color: #f87171;
+            color: #f87171 !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-danger * {
+            color: #f87171 !important;
         }
         .custom-alert-warning {
             background-color: rgba(245, 158, 11, 0.08);
             border: 1px solid rgba(245, 158, 11, 0.2);
             border-radius: 8px;
             padding: 12px 16px;
-            color: #fbbf24;
+            color: #fbbf24 !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-warning * {
+            color: #fbbf24 !important;
         }
         .custom-alert-success {
             background-color: rgba(16, 185, 129, 0.08);
             border: 1px solid rgba(16, 185, 129, 0.2);
             border-radius: 8px;
             padding: 12px 16px;
-            color: #34d399;
+            color: #34d399 !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-success * {
+            color: #34d399 !important;
         }
         </style>
         """
@@ -226,19 +266,35 @@ def inject_theme():
             --border: #cbd5e1;
         }
         
-        html, body, [class*="css"] {
+        html, body, [class*="css"], [class*="st-"] {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text-primary) !important;
         }
+
+        /* Explicit text elements contrast coloring */
+        p, li, label, span, strong, em, h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary) !important;
+        }
+        div[data-testid="stMarkdownContainer"] * {
+            color: var(--text-primary) !important;
+        }
+
+        /* Specific sidebar exception overrides */
+        section[data-testid="stSidebar"] * {
+            color: var(--text-secondary) !important;
+        }
+
+        /* Widget labels styling */
+        div[data-testid="stWidgetLabel"] p, label[data-testid="stWidgetLabel"] p {
+            color: var(--text-secondary) !important;
+        }
+        
         .stApp {
             background-color: var(--background) !important;
         }
         section[data-testid="stSidebar"] {
             background-color: #f8fafc !important;
             border-right: 1px solid #e2e8f0 !important;
-        }
-        section[data-testid="stSidebar"] * {
-            color: var(--text-secondary) !important;
         }
         section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"][aria-current="page"] {
             background-color: #f5f3ff !important;
@@ -277,7 +333,7 @@ def inject_theme():
         .sdg-banner-title {
             font-size: 12px;
             font-weight: 600;
-            color: #15803d;
+            color: #15803d !important;
             margin: 0 0 4px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -285,8 +341,11 @@ def inject_theme():
         .sdg-banner-text {
             font-size: 15px;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--text-primary) !important;
             margin: 0;
+        }
+        .sdg-banner * {
+            color: inherit !important;
         }
         button[data-testid="baseButton-secondary"] {
             background-color: #ffffff !important;
@@ -297,6 +356,9 @@ def inject_theme():
             font-weight: 600 !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+        }
+        button[data-testid="baseButton-secondary"] * {
+            color: inherit !important;
         }
         button[data-testid="baseButton-secondary"]:hover {
             transform: translateY(-2px) !important;
@@ -315,12 +377,15 @@ def inject_theme():
             font-size: 13.5px;
             max-width: 80%;
             margin-bottom: 12px;
-            color: var(--text-primary);
+            color: var(--text-primary) !important;
             line-height: 1.5;
+        }
+        .chat-bubble-tutor * {
+            color: var(--text-primary) !important;
         }
         .chat-bubble-user {
             background-color: var(--primary);
-            color: #ffffff;
+            color: #ffffff !important;
             border-radius: 12px 12px 2px 12px;
             padding: 10px 14px;
             font-size: 13.5px;
@@ -329,6 +394,9 @@ def inject_theme():
             margin-bottom: 12px;
             line-height: 1.5;
             box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+        }
+        .chat-bubble-user * {
+            color: #ffffff !important;
         }
         .upload-dashed-box {
             border: 1.5px dashed #cbd5e1;
@@ -367,15 +435,18 @@ def inject_theme():
         .stat-val {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary) !important;
             margin-bottom: 4px;
         }
         .stat-label {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-muted) !important;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+        .stat-box * {
+            color: inherit !important;
         }
 
         .custom-alert-danger {
@@ -383,24 +454,33 @@ def inject_theme():
             border: 1px solid #fca5a5;
             border-radius: 8px;
             padding: 12px 16px;
-            color: #b91c1c;
+            color: #b91c1c !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-danger * {
+            color: #b91c1c !important;
         }
         .custom-alert-warning {
             background-color: #fffbeb;
             border: 1px solid #fcd34d;
             border-radius: 8px;
             padding: 12px 16px;
-            color: #b45309;
+            color: #b45309 !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-warning * {
+            color: #b45309 !important;
         }
         .custom-alert-success {
             background-color: #f0fdf4;
             border: 1px solid #86efac;
             border-radius: 8px;
             padding: 12px 16px;
-            color: #15803d;
+            color: #15803d !important;
             margin-bottom: 12px;
+        }
+        .custom-alert-success * {
+            color: #15803d !important;
         }
         </style>
         """

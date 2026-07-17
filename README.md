@@ -12,10 +12,12 @@ EduAI is a production-grade, database-driven learning assistant built to align w
 ---
 
 ## 🛠️ Architecture & Technology Stack
-*   **Frontend Interface:** [Streamlit](https://streamlit.io/) with a fully customized Dark/Light responsive UI.
-*   **AI & LLM Orchestrator:** Google Gemini API (`gemini-2.0-flash` for summaries, quizzes, and RAG tutoring).
-*   **Vector Embeddings & Retrieval:** `models/text-embedding-004` (fallback to `models/embedding-001`) with local NumPy cosine similarity search.
-*   **Database Engine:** SQLite (local persistence, no heavy external servers needed).
+*   **Core Architecture:** Python 3.10+
+*   **Web Framework:** Streamlit (Custom Dark SaaS UI Theme)
+*   **AI & LLM Orchestrator:** Google Gemini API (`gemini-pro` for summaries, quizzes, and RAG tutoring).
+*   **Local Database:** SQLite3 (Persists quizzes, topic progress, settings, study plans).
+*   **Vector Search & Embeddings:** Google Generative AI Embeddings (`models/embedding-001`) with NumPy cosine similarity indexing.
+*   **Report & Analytics Generators:** `python-pptx` (Slide generation) & `reportlab` (PDF generation).
 *   **Analytics Engine:** Pandas & Plotly (for interactive performance and error distribution graphs).
 *   **Asset Generator:** `python-pptx` (PowerPoint deck compilers) and `reportlab` (PDF document generator).
 

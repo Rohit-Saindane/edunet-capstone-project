@@ -196,7 +196,7 @@ def generate_presentation(output_path: str = "report/presentation.pptx"):
     tf_body = create_text_box(slide, Inches(0.8), Inches(1.8), Inches(11.5), Inches(5))
     stack = [
         ("Frontend & Dashboard", "Streamlit (Modern reactive UI, multi-page layout, custom styling)."),
-        ("LLM Orchestrator", "Google Gemini API (gemini-2.5-flash for summarization, evaluations, and tutor chat)."),
+        ("LLM Orchestrator", "Google Gemini API (gemini-pro for summarization, evaluations, and tutor chat)."),
         ("Retrieval Vector Store", "Gemini Embeddings Model + NumPy Cosine-Similarity for local semantic lookups."),
         ("Data Extraction", "PyPDF2 & pdfplumber for processing multi-page textbook PDF files."),
         ("Database Engine", "SQLite for lightweight local tracking of quiz configurations, grades, and weak topics."),

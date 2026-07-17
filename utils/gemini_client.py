@@ -15,7 +15,7 @@ def clean_json_string(text: str) -> str:
 def generate_summary(text: str, api_key: str) -> Dict[str, Any]:
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-pro")
         prompt = f"""
         You are an expert educator under SDG 4 (Quality Education). 
         Analyze the following text and generate structured notes. 
@@ -49,7 +49,7 @@ def generate_summary(text: str, api_key: str) -> Dict[str, Any]:
 def generate_quiz(text: str, topic: str, difficulty: str, mcq_count: int, sa_count: int, tf_count: int, api_key: str) -> List[Dict[str, Any]]:
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-pro")
         prompt = f"""
         You are an expert educational content developer.
         Based on the provided text on the topic "{topic}", generate a quiz.
@@ -86,7 +86,7 @@ def generate_quiz(text: str, topic: str, difficulty: str, mcq_count: int, sa_cou
 def evaluate_answer(question_text: str, correct_answer: str, question_type: str, student_response: str, api_key: str) -> Dict[str, Any]:
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-pro")
         prompt = f"""
         You are an AI learning evaluator. Grade this student response.
         
@@ -122,7 +122,7 @@ def evaluate_answer(question_text: str, correct_answer: str, question_type: str,
 def generate_study_plan(weak_topics: List[Dict[str, Any]], api_key: str) -> Dict[str, Any]:
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-pro")
         topics_str = "\n".join([f"- {t['topic_name']}: incorrect answers count = {t['incorrect_count']}" for t in weak_topics])
         prompt = f"""
         You are an expert academic advisor. Create a personalized study plan for a student struggling with these topics:
@@ -151,7 +151,7 @@ def generate_study_plan(weak_topics: List[Dict[str, Any]], api_key: str) -> Dict
 def ask_tutor(query: str, context: str, chat_history: List[Dict[str, str]], persona: str, api_key: str) -> str:
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-pro")
         persona_instructions = ""
         if persona == "Simple Words":
             persona_instructions = "Explain using simple words, analogies, and short sentences. Avoid complex jargon."

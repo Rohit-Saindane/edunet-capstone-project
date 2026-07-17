@@ -16,7 +16,7 @@ def inject_theme():
         footer {visibility: hidden;}
         header {visibility: hidden;}
 
-        :root {
+        html, body, .stApp, :root {
             --primary: #4f46e5;
             --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
             --background: #0f172a;
@@ -29,15 +29,15 @@ def inject_theme():
         
         html, body, [class*="css"], [class*="st-"] {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #f1f5f9) !important;
         }
 
-        /* Explicit text elements contrast coloring */
+        /* Explicit text elements contrast coloring with safe fallbacks */
         p, li, label, span, strong, em, h1, h2, h3, h4, h5, h6 {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #f1f5f9) !important;
         }
         div[data-testid="stMarkdownContainer"] * {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #f1f5f9) !important;
         }
 
         /* Specific sidebar exception overrides */
@@ -47,7 +47,7 @@ def inject_theme():
 
         /* Widget labels styling */
         div[data-testid="stWidgetLabel"] p, label[data-testid="stWidgetLabel"] p {
-            color: var(--text-secondary) !important;
+            color: var(--text-secondary, #cbd5e1) !important;
         }
         
         .stApp {
@@ -63,8 +63,8 @@ def inject_theme():
             color: #818cf8 !important;
         }
         div[data-testid="stVerticalBlockBorderWrapper"] {
-            background-color: var(--surface) !important;
-            border: 1px solid var(--border) !important;
+            background-color: var(--surface, rgba(30, 41, 59, 0.45)) !important;
+            border: 1px solid var(--border, rgba(255, 255, 255, 0.08)) !important;
             border-radius: 12px !important;
             padding: 24px !important;
             backdrop-filter: blur(16px);
@@ -79,7 +79,7 @@ def inject_theme():
             font-weight: 700 !important;
         }
         div[data-testid="stMetricLabel"] {
-            color: var(--text-muted) !important;
+            color: var(--text-muted, #94a3b8) !important;
             font-weight: 500 !important;
         }
         .sdg-banner {
@@ -110,7 +110,7 @@ def inject_theme():
             color: inherit !important;
         }
         button[data-testid="baseButton-secondary"] {
-            background: var(--primary-gradient) !important;
+            background: var(--primary-gradient, linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%)) !important;
             color: white !important;
             border: none !important;
             border-radius: 8px !important;
@@ -138,14 +138,14 @@ def inject_theme():
             font-size: 13.5px;
             max-width: 80%;
             margin-bottom: 12px;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #f1f5f9) !important;
             line-height: 1.5;
         }
         .chat-bubble-tutor * {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #f1f5f9) !important;
         }
         .chat-bubble-user {
-            background-color: var(--primary);
+            background-color: var(--primary, #4f46e5);
             color: #ffffff !important;
             border-radius: 12px 12px 2px 12px;
             padding: 10px 14px;
@@ -202,7 +202,7 @@ def inject_theme():
         }
         .stat-label {
             font-size: 11px;
-            color: var(--text-muted) !important;
+            color: var(--text-muted, #94a3b8) !important;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -255,7 +255,7 @@ def inject_theme():
         footer {visibility: hidden;}
         header {visibility: hidden;}
 
-        :root {
+        html, body, .stApp, :root {
             --primary: #4f46e5;
             --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
             --background: #fafafa;
@@ -268,29 +268,29 @@ def inject_theme():
         
         html, body, [class*="css"], [class*="st-"] {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
         }
 
-        /* Explicit text elements contrast coloring */
+        /* Explicit text elements contrast coloring with safe fallbacks */
         p, li, label, span, strong, em, h1, h2, h3, h4, h5, h6 {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
         }
         div[data-testid="stMarkdownContainer"] * {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
         }
 
         /* Specific sidebar exception overrides */
         section[data-testid="stSidebar"] * {
-            color: var(--text-secondary) !important;
+            color: var(--text-secondary, #475569) !important;
         }
 
         /* Widget labels styling */
         div[data-testid="stWidgetLabel"] p, label[data-testid="stWidgetLabel"] p {
-            color: var(--text-secondary) !important;
+            color: var(--text-secondary, #475569) !important;
         }
         
         .stApp {
-            background-color: var(--background) !important;
+            background-color: var(--background, #fafafa) !important;
         }
         section[data-testid="stSidebar"] {
             background-color: #f8fafc !important;
@@ -298,11 +298,11 @@ def inject_theme():
         }
         section[data-testid="stSidebar"] [data-testid="stSidebarNavLink"][aria-current="page"] {
             background-color: #f5f3ff !important;
-            color: var(--primary) !important;
+            color: var(--primary, #4f46e5) !important;
         }
         div[data-testid="stVerticalBlockBorderWrapper"] {
-            background-color: var(--surface) !important;
-            border: 1px solid var(--border) !important;
+            background-color: var(--surface, #ffffff) !important;
+            border: 1px solid var(--border, #cbd5e1) !important;
             border-radius: 12px !important;
             padding: 24px !important;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
@@ -313,11 +313,11 @@ def inject_theme():
             border-color: #93c5fd !important;
         }
         div[data-testid="stMetricValue"] {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
             font-weight: 700 !important;
         }
         div[data-testid="stMetricLabel"] {
-            color: var(--text-muted) !important;
+            color: var(--text-muted, #64748b) !important;
             font-weight: 500 !important;
         }
         .sdg-banner {
@@ -341,7 +341,7 @@ def inject_theme():
         .sdg-banner-text {
             font-size: 15px;
             font-weight: 600;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
             margin: 0;
         }
         .sdg-banner * {
@@ -349,7 +349,7 @@ def inject_theme():
         }
         button[data-testid="baseButton-secondary"] {
             background-color: #ffffff !important;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
             border: 1px solid #cbd5e1 !important;
             border-radius: 8px !important;
             padding: 8px 16px !important;
@@ -362,8 +362,8 @@ def inject_theme():
         }
         button[data-testid="baseButton-secondary"]:hover {
             transform: translateY(-2px) !important;
-            border-color: var(--primary) !important;
-            color: var(--primary) !important;
+            border-color: var(--primary, #4f46e5) !important;
+            color: var(--primary, #4f46e5) !important;
             box-shadow: 0 4px 6px rgba(79, 70, 229, 0.15) !important;
         }
         button[data-testid="baseButton-secondary"]:active {
@@ -377,14 +377,14 @@ def inject_theme():
             font-size: 13.5px;
             max-width: 80%;
             margin-bottom: 12px;
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
             line-height: 1.5;
         }
         .chat-bubble-tutor * {
-            color: var(--text-primary) !important;
+            color: var(--text-primary, #0f172a) !important;
         }
         .chat-bubble-user {
-            background-color: var(--primary);
+            background-color: var(--primary, #4f46e5);
             color: #ffffff !important;
             border-radius: 12px 12px 2px 12px;
             padding: 10px 14px;
@@ -407,7 +407,7 @@ def inject_theme():
             transition: border-color 0.3s ease;
         }
         .upload-dashed-box:hover {
-            border-color: var(--primary);
+            border-color: var(--primary, #4f46e5);
         }
 
         .stat-container {
@@ -435,12 +435,12 @@ def inject_theme():
         .stat-val {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary) !important;
+            color: var(--primary, #4f46e5) !important;
             margin-bottom: 4px;
         }
         .stat-label {
             font-size: 11px;
-            color: var(--text-muted) !important;
+            color: var(--text-muted, #64748b) !important;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
